@@ -22,7 +22,7 @@ class UserStore
         }
 
         $user = new User();
-        $user->id = $record->id;
+        $user->id = (int) $record->id;
         $user->username = $record->username;
 
         return $user;

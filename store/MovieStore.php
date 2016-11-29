@@ -22,7 +22,7 @@ class MovieStore
         }
 
         $movie = new Movie();
-        $movie->id = $record->id;
+        $movie->id = (int) $record->id;
         $movie->title = $record->title;
         $movie->numRatings = $record->getNumRatings();
         $movie->meanRating = $record->getMeanRating();
