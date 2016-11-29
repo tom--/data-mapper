@@ -4,6 +4,8 @@
 
 ?>
 
+<h3>Click a title to add/change your review</h3>
+
 <?= \yii\grid\GridView::widget([
     'dataProvider' => $provider,
     'columns' => [
@@ -17,4 +19,3 @@
         'meanRating',
     ],
 ]) ?>
-

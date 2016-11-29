@@ -26,12 +26,12 @@ class MovieRecord extends ActiveRecord
 
     public function getNumRatings(): int
     {
-        return $this->getRatings()->count();
+        return (int) $this->getRatings()->count();
     }
 
     public function getMeanRating(): float
     {
-        return $this->getRatings()->average('rating') ?: 0;
+        return (float) $this->getRatings()->average('rating') ?: 0;
     }
 
     public function getRatings()

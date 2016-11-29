@@ -45,10 +45,14 @@ class ReviewController extends Controller
         ]);
     }
 
+    /**
+     * @param string|int $id
+     * @return string|\yii\web\Response
+     */
     public function actionRate($id)
     {
         $form = new RateForm();
-        $form->movie = (new MovieStore())->findById($id);
+        $form->movie = (new MovieStore())->findById((int) $id);
         $form->user = Yii::$app->user->identity;
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             // The controller understands nothing of input mapping (from form model to data object)
