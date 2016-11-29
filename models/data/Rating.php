@@ -9,7 +9,16 @@ namespace app\models\data;
  */
 class Rating
 {
-    public $userId;
-    public $movieId;
+    /**
+     * @var User
+     */
+    public $user;
+    /**
+     * @var Movie
+     */
+    public $movie;
+    /**
+     * @var int
+     */
     public $rating;
 }
