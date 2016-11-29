@@ -1,15 +1,17 @@
 <?php
+declare(strict_types = 1);
 
 namespace app\models\forms;
 
 use app\models\data\Movie;
 use app\models\data\Rating;
+use yii\base\Model;
 
 /**
  * Standard Yii form model except for the addition of methods containing logic
  * mapping between a form instance and whatever data object(s) it uses.
  */
-class RateForm extends \yii\base\Model
+class RateForm extends Model
 {
     /**
      * @var int
@@ -26,7 +28,7 @@ class RateForm extends \yii\base\Model
 
     public function rules() : array
     {
-        // whatever you need. familliar stuff
+        // Whatever you need. Familiar stuff
         return [
             ['rating', 'required'],
             ['rating', 'number', 'min' => 1, 'max' => 5],

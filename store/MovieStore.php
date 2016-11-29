@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace app\store;
 
@@ -6,11 +7,11 @@ use app\models\ar\MovieRecord;
 use app\models\data\Movie;
 
 /**
- * The "store" class for UserMovieRating data model objects.
+ * The "store" class for Movie data models.
  *
  * A "store" class isolates the persistence logic for data models from their users.
- * The data model user doesn't know anything about how the models are saved to
- * persistant storage, how they are retrieved or changed. They could
+ * The data model user does not know anything about how the models are saved to
+ * persistent storage, how they are retrieved or changed.
  */
 class MovieStore
 {

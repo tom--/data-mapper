@@ -1,17 +1,19 @@
 <?php
+declare(strict_types = 1);
 
 namespace app\models\data;
 
 use app\store\UserStore;
+use yii\web\IdentityInterface;
 
-class User implements \yii\web\IdentityInterface
+class User implements IdentityInterface
 {
     public $id;
     public $username;
 
     public function validatePassword(string $password): bool
     {
-        // password security is not implemented. passsword is same as username
+        // password security is not implemented. password is same as username
         return $this->username === $password;
     }
 
