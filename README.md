@@ -49,7 +49,7 @@ anywhere.
 ### Compared to the Gii AR/Form models
     
 The architecture described above is rather more elaborate than the kind of models 
-that Gii generates. Its models collapse the business logic's form model and database 
+that Gii generates. Gii collapses the business logic's form model and database 
 AR models into one. This works when the
 form corresponds tightly with the AR model, e.g. if the form has a simple subset of
 the table's fields, and when only one form works with that table.
@@ -60,14 +60,14 @@ a lot of forms using fewer tables, it makes sense to put the mapping between for
 models in the form models.
 
 Now imagine that you've implemented the database and lots of forms and biz-logic when
-you realize that the database schema needs to change. Perhaps you discover that need to 
+you realize that the database schema needs to change. Perhaps you discover the need to 
 normalize or de-normalize a table. If you are unlucky, you might need to change lots of
 form models because you have to fix the mapping between those form models and the 
 revised schema and AR models. This kind of scenario is not uncommon in larger systems. The 
-refactor can be so nasty that it dooms a project.
+refactor can be very nasty.
 
 
-### The hard part
+### That's not the hard part
 
 So you can see how separating
 
@@ -76,14 +76,18 @@ So you can see how separating
 - AR models
 - Domain model storage classes
 
-decouples things that really don't want to be coupled at all if you can avoid it.
+decouples things that really don't want to be coupled at all, if you can avoid it.
 
-The extra burden adopting the data mapping approach and writing all these classes is not 
-very much. In larger systems its insignificant. This isn't the hard part.
+In terms of writing code, the extra burden of adopting the data mapping approach is not 
+very much. In larger systems its really insignificant. That's not the hard part.
 
 What's hard is designing the domain objects. They are your internal standards, the spec that
-everyone else has to conform to. But at the start of a project it can be hard to know what
-the domain objects should be or their details.
+everyone else has to conform to. The biz-logic and database can vary at low cost if
+the domain object classes are relatively stable. Adding a few fields over time won't hurt
+but restructuring the app data among the domain objects will.
+
+At the start of a project it can be hard to know much of what the domain objects should be.
+But you want to get it right early. This is the hard part.
 
 
 ### The example app: users rating movies
@@ -108,8 +112,21 @@ The ontology of models divided into the layers described above are
                 |   Movie   |   MovieRecord
 ```
 
-There's a store class for each type of domain object. Note: each also has a NotFound exception 
-because we don't return `null` to indicate not-found from the store class APIs to their 
-biz-logic clients.
+There's a store class for each type of domain object.
 
+Note: each domain object also has a NotFound exception 
+because the store classes don't return `null` to the biz-logic layer indicate that
+nothing was found. This is because
+
+```php
+try {
+    $fooStore->findById($id);
+} catch (FooNotFound $exception) {
+    // do something
+}
+```
+
+Is actually nicer than testing for null or catching a general or DB exception because
+the `FooStore` class is being specific about what happened. Moreover, `FooStore::findById()` 
+does not need to resort to a nullable return declaration.
 
