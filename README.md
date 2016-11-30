@@ -43,7 +43,7 @@ anywhere.
     - understand the mapping between between database models and domain objects
     - provide the internal API that biz-logic uses to CRUD the domain objects
     
-    This API the mappings  are *ad hoc* and can easily be changed to accommodate whatever 
+    This API and the mappings  are *ad hoc* and can easily be changed to accommodate whatever 
     the biz-logic needs.
     
 ### Compared to the Gii AR/Form models
