@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace app\store;
 
 use app\models\ar\MovieRecord;
-use app\models\data\Movie;
+use app\models\domain\Movie;
 
 /**
  * The "store" class for Movie data models.

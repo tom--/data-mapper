@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace app\store;
 
 use app\models\ar\RatingRecord;
-use app\models\data\Rating;
+use app\models\domain\Rating;
 use yii\db\ActiveQuery;
 
 /**

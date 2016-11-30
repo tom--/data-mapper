@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace app\store;
 
 use app\models\ar\UserRecord;
-use app\models\data\User;
+use app\models\domain\User;
 
 /**
  * The "store" class for UserMovieRating data model objects.

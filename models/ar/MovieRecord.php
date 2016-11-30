@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace app\models\ar;
 
-use app\models\data\Rating;
+use app\models\domain\Rating;
 use yii\db\ActiveRecord;
 
 /**

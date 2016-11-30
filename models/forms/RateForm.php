@@ -3,8 +3,8 @@ declare(strict_types = 1);
 
 namespace app\models\forms;
 
-use app\models\data\Movie;
-use app\models\data\Rating;
+use app\models\domain\Movie;
+use app\models\domain\Rating;
 use yii\base\Model;
 
 /**
@@ -18,7 +18,7 @@ class RateForm extends Model
      */
     public $rating;
     /**
-     * @var \app\models\data\User
+     * @var \app\models\domain\User
      */
     public $user;
     /**

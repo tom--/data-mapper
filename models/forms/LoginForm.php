@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace app\models\forms;
 
-use app\models\data\User;
+use app\models\domain\User;
 use app\store\UserNotFound;
 use app\store\UserStore;
 use Yii;

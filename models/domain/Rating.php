@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace app\models\data;
+namespace app\models\domain;
 
 /**
  * In this example, just data. But it could have logic too. The main point is that this
