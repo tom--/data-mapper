@@ -149,3 +149,6 @@ Then
         ./yii serve
         
 - Browse to [`http://localhost:8080`](http://localhost:8080)
+- Log on with `viewer/viewer` or `critic/critic`
+
+Usernames are in the migration and passwords are the same as usernames (i.e. no security).
