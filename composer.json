@@ -1,20 +1,19 @@
 {
-    "name": "yiisoft/yii2-app-basic",
-    "description": "Yii 2 Basic Project Template",
-    "keywords": ["yii2", "framework", "basic", "project template"],
-    "homepage": "http://www.yiiframework.com/",
+    "name": "yiisoft/data-mapper",
+    "description": "Movie rating app to demonstrate data mapping in Yii 2",
+    "keywords": ["data-mapper", "yii2"],
+    "homepage": "https://github.com/tom--/data-mapper/tree/rating",
     "type": "project",
-    "license": "BSD-3-Clause",
+    "license": "ISC",
     "support": {
-        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
-        "forum": "http://www.yiiframework.com/forum/",
-        "wiki": "http://www.yiiframework.com/wiki/",
+        "issues": "https://github.com/tom--/data-mapper/issues",
         "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2"
+        "source": "https://github.com/tom--/data-mapper",
+        "email": "Tom Worster <fsb@thefsb.org>"
     },
     "minimum-stability": "stable",
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=7.0.0",
         "yiisoft/yii2": "~2.0.5",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0"
