@@ -130,3 +130,22 @@ Is actually nicer than testing for null or catching a general or DB exception be
 the `FooStore` class is being specific about what happened. Moreover, `FooStore::findById()` 
 does not need to resort to a nullable return declaration.
 
+### To run the app
+
+If you haven't already:
+
+- [Install Composer](http://www.yiiframework.com/doc-2.0/guide-start-installation.html#installing-composer)
+- [Install fxp/composer-asset-plugin](http://www.yiiframework.com/doc-2.0/guide-start-installation.html#installing-from-composer)
+(but don't run composer create-project)
+
+Then
+
+- Clone this repo
+- Checkout rating branch
+- In the repo dir:
+
+        composer install --prefer-dist
+        ./yii migrate
+        ./yii serve
+        
+- Browse to [`http://localhost:8080`](http://localhost:8080)
