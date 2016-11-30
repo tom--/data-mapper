@@ -3,7 +3,7 @@ Data mapping in Yii 2
 
 The "master" branch contains the [Yii 2 Basic Project Template](https://github.com/yiisoft/yii2-app-basic).
 
-The "rating" branch has a trivial database-wrapper application for user to rate movies implemented
+The "rating" branch has a trivial database-wrapper application for users to rate movies implemented
 using one conception of the data mapper concept using Yii 2.
 
 ### The general idea
@@ -20,13 +20,13 @@ I like to imagine the architecture as having three layers:
     - the representation of the i/o data fields (e.g. form fields) and their labels and hints
     - provides input validation and error messages
     - implements the business logic of the client interaction
-    - maps between its own model and the internal data objects
+    - maps between its own model and the domain objects
 - **Database models** are, in our context, Yii Active Record models that
     - provide an API to the persistent storage, e.g. SQL or NoSQL DB
     - represent and have the structure of the database schema
     - change when we migrate the schema
-    - do not understand how they map to internal data objects or business logic models
-- **Domain objects** are instances of internal data model classes that
+    - do not understand how they map to domain objects or business logic models
+- **Domain objects** are instances of domain model classes that
     - mostly just provide public properties representing application data
     - function as the interface separating biz-logic from database
     - are the *canonical form* for representation of app-internal data 
@@ -41,7 +41,7 @@ anywhere.
 
 - **Store classes** contain mostly methods that
     - understand the mapping between between database models and domain objects
-    - provide the internal API that biz-logic uses to CRUD the internal data objects
+    - provide the internal API that biz-logic uses to CRUD the domain objects
     
     This API the mappings  are *ad hoc* and can easily be changed to accommodate whatever 
     the biz-logic needs.
