@@ -4,8 +4,8 @@ declare(strict_types = 1);
 namespace app\models\forms;
 
 use app\models\domain\User;
-use app\store\UserNotFound;
-use app\store\UserStore;
+use app\repositories\UserNotFound;
+use app\repositories\UserRepo;
 use Yii;
 use yii\base\Model;
 
@@ -45,7 +45,7 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             try {
-                $user = (new UserStore())->findByUsername($this->username);
+                $user = (new UserRepo())->findByUsername($this->username);
             } catch (UserNotFound $e) {
                 $this->addError($attribute, 'Incorrect username');
 
@@ -77,7 +77,7 @@ class LoginForm extends Model
     public function getUser() : User
     {
         if (empty($this->_user)) {
-            $this->_user = (new UserStore())->findByUsername($this->username);
+            $this->_user = (new UserRepo())->findByUsername($this->username);
         }
 
         return $this->_user;

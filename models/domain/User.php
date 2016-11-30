@@ -3,13 +3,27 @@ declare(strict_types = 1);
 
 namespace app\models\domain;
 
-use app\store\UserStore;
+use app\repositories\UserRepo;
 use yii\web\IdentityInterface;
 
 class User implements IdentityInterface
 {
-    public $id;
-    public $username;
+    private $id;
+    private $username;
+
+    public function getUsername() : string {
+        return $this->username;
+    }
+
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
 
     public function validatePassword(string $password): bool
     {
@@ -19,7 +33,7 @@ class User implements IdentityInterface
 
     public static function findIdentity($id)
     {
-        return (new UserStore())->findById($id);
+        return (new UserRepo())->findById($id);
     }
 
     public function getId()

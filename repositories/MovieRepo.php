@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace app\store;
+namespace app\repositories;
 
 use app\models\ar\MovieRecord;
 use app\models\domain\Movie;
@@ -13,7 +13,7 @@ use app\models\domain\Movie;
  * The data model user does not know anything about how the models are saved to
  * persistent storage, how they are retrieved or changed.
  */
-class MovieStore
+class MovieRepo
 {
     public static function fromRecord(MovieRecord $record = null) : Movie
     {
@@ -22,10 +22,10 @@ class MovieStore
         }
 
         $movie = new Movie();
-        $movie->id = (int) $record->id;
-        $movie->title = $record->title;
-        $movie->numRatings = $record->getNumRatings();
-        $movie->meanRating = $record->getMeanRating();
+        $movie->setId((int) $record->id);
+        $movie->setTitle($record->title);
+        $movie->setNumRatings($record->getNumRatings());
+        $movie->setMeanRating($record->getMeanRating());
 
         return $movie;
     }

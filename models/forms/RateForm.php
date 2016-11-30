@@ -38,9 +38,9 @@ class RateForm extends Model
     public function getDataModel() : Rating
     {
         $model = new Rating();
-        $model->rating = $this->rating;
-        $model->user = $this->user;
-        $model->movie = $this->movie;
+        $model->setRating((int) $this->rating);
+        $model->setUser($this->user);
+        $model->setMovie($this->movie);
 
         return $model;
     }

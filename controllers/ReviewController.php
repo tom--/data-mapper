@@ -4,8 +4,8 @@ declare(strict_types = 1);
 namespace app\controllers;
 
 use app\models\forms\RateForm;
-use app\store\MovieStore;
-use app\store\RatingStore;
+use app\repositories\MovieRepo;
+use app\repositories\RatingRepo;
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii\filters\AccessControl;
@@ -36,7 +36,7 @@ class ReviewController extends Controller
             $this->redirect(['site/login']);
         }
 
-        $movies = (new MovieStore())->findAll();
+        $movies = (new MovieRepo())->findAll();
         return $this->render('index', [
             'provider' => new ArrayDataProvider([
                 'allModels' => $movies,
@@ -52,7 +52,7 @@ class ReviewController extends Controller
     public function actionRate($id)
     {
         $form = new RateForm();
-        $form->movie = (new MovieStore())->findById((int) $id);
+        $form->movie = (new MovieRepo())->findById((int) $id);
         $form->user = Yii::$app->user->identity;
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             // The controller understands nothing of input mapping (from form model to data object)
@@ -61,7 +61,7 @@ class ReviewController extends Controller
 
             // And understands nothing of storage mapping (from data object to persistent storage),
             // not even where it is.
-            (new RatingStore())->save($rating);
+            (new RatingRepo())->save($rating);
 
             return $this->redirect(['index']);
         }

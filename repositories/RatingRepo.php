@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace app\store;
+namespace app\repositories;
 
 use app\models\ar\RatingRecord;
 use app\models\domain\Rating;
@@ -14,21 +14,21 @@ use yii\db\ActiveQuery;
  * The data model user does not know anything about how the models are saved to
  * persistent storage, how they are retrieved or changed.
  */
-class RatingStore
+class RatingRepo
 {
     public function save(Rating $object)
     {
         $record = RatingRecord::findOne([
-            'user_id' => $object->user->id,
-            'movie_id' => $object->movie->id,
+            'user_id' => $object->getUser()->getId(),
+            'movie_id' => $object->getMovie()->getId(),
         ]);
         if (empty($record)) {
             $record = new RatingRecord([
-                'user_id' => $object->user->id,
-                'movie_id' => $object->movie->id,
+                'user_id' => $object->getUser()->getId(),
+                'movie_id' => $object->getMovie()->getId(),
             ]);
         }
-        $record->rating = $object->rating;
+        $record->rating = $object->getRating();
         $record->save(false);
     }
 
@@ -56,9 +56,9 @@ class RatingStore
     public static function fromRecord(RatingRecord $record)
     {
         $model = new Rating();
-        $model->user = UserStore::fromRecord($record->user);
-        $model->movie = MovieStore::fromRecord($record->movie);
-        $model->rating = $record->rating;
+        $model->setUser(UserRepo::fromRecord($record->user));
+        $model->setMovie(MovieRepo::fromRecord($record->movie));
+        $model->setRating($record->rating);
 
         return $model;
     }

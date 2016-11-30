@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace app\store;
+namespace app\repositories;
 
 use app\models\ar\UserRecord;
 use app\models\domain\User;
@@ -13,7 +13,7 @@ use app\models\domain\User;
  * The data model user does not know anything about how the models are saved to
  * persistent storage, how they are retrieved or changed.
  */
-class UserStore
+class UserRepo
 {
     public static function fromRecord(UserRecord $record = null): User
     {
@@ -22,8 +22,8 @@ class UserStore
         }
 
         $user = new User();
-        $user->id = (int) $record->id;
-        $user->username = $record->username;
+        $user->setId((int) $record->id);
+        $user->setUsername($record->username);
 
         return $user;
     }

@@ -1,6 +1,7 @@
 <?php
 
 /** @var \yii\data\ArrayDataProvider $provider */
+use app\models\domain\Movie;
 
 ?>
 
@@ -11,11 +12,21 @@
     'columns' => [
         [
             'attribute' => 'title',
-            'content' => function ($model) {
-                return \yii\bootstrap\Html::a($model->title, ['rate', 'id' => $model->id], ['encode' => true]);
+            'content' => function (Movie $model) {
+                return \yii\bootstrap\Html::a($model->getTitle(), ['rate', 'id' => $model->getId()], ['encode' => true]);
             }
         ],
-        'numRatings',
-        'meanRating',
+        [
+            'attribute' => 'numRatings',
+            'content' => function (Movie $model) {
+                return $model->getNumRatings();
+            }
+        ],
+        [
+            'attribute' => 'meanRating',
+            'content' => function (Movie $model) {
+                return $model->getMeanRating();
+            }
+        ],
     ],
 ]) ?>
