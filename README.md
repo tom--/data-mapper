@@ -36,10 +36,10 @@ I like to imagine the architecture as having three layers:
 
 The alert reader will have noticed that nothing in the above ontology knows the mapping
 between database models and domain objects. There is indeed another category of
-classes that I call "store classes". They probably live in the data objects layer, if
+classes call **repositories**. They probably live in the data objects layer, if
 anywhere.
 
-- **Store classes** contain mostly methods that
+- **Repository classes** contain mostly methods that
     - understand the mapping between between database models and domain objects
     - provide the internal API that biz-logic uses to CRUD the domain objects
     
@@ -112,22 +112,22 @@ The ontology of models divided into the layers described above are
                 |   Movie   |   MovieRecord
 ```
 
-There's a store class for each type of domain object.
+There's a repository class for each type of domain object.
 
 Note: each domain object also has a NotFound exception 
-because the store classes don't return `null` to the biz-logic layer indicate that
+because the repository classes don't return `null` to the biz-logic layer indicate that
 nothing was found. This is because
 
 ```php
 try {
-    $fooStore->findById($id);
+    $fooRepo->findById($id);
 } catch (FooNotFound $exception) {
     // do something
 }
 ```
 
 Is actually nicer than testing for null or catching a general or DB exception because
-the `FooStore` class is being specific about what happened. Moreover, `FooStore::findById()` 
+the `FooRepo` class is being specific about what happened. Moreover, `FooRepo::findById()` 
 does not need to resort to a nullable return declaration.
 
 ### To run the app
