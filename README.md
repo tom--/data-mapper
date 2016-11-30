@@ -141,9 +141,9 @@ If you haven't already:
 Then
 
 - Clone this repo
-- Checkout rating branch
 - In the repo dir:
 
+        git checkout rating
         composer install --prefer-dist
         ./yii migrate
         ./yii serve

@@ -9,7 +9,7 @@
         "issues": "https://github.com/tom--/data-mapper/issues",
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/tom--/data-mapper",
-        "email": "Tom Worster <fsb@thefsb.org>"
+        "email": "fsb@thefsb.org"
     },
     "minimum-stability": "stable",
     "require": {
