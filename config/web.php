@@ -15,7 +15,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\domain\User',
+            'identityClass' => \app\models\Identity::class,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

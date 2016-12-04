@@ -8,9 +8,9 @@ use app\models\domain\Rating;
 use yii\db\ActiveQuery;
 
 /**
- * The "store" class for UserMovieRating data model objects.
+ * The repository class for UserMovieRating data model objects.
  *
- * A "store" class isolates the persistence logic for data models from their users.
+ * A repository class isolates the persistence logic for data models from their users.
  * The data model user does not know anything about how the models are saved to
  * persistent storage, how they are retrieved or changed.
  */
@@ -55,10 +55,11 @@ class RatingRepo
 
     public static function fromRecord(RatingRecord $record)
     {
-        $model = new Rating();
-        $model->setUser(UserRepo::fromRecord($record->user));
-        $model->setMovie(MovieRepo::fromRecord($record->movie));
-        $model->setRating($record->rating);
+        $model = new Rating(
+            UserRepo::fromRecord($record->user),
+            MovieRepo::fromRecord($record->movie),
+            $record->rating
+        );
 
         return $model;
     }

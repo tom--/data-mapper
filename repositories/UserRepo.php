@@ -7,9 +7,9 @@ use app\models\ar\UserRecord;
 use app\models\domain\User;
 
 /**
- * The "store" class for UserMovieRating data model objects.
+ * The repository for UserMovieRating data model objects.
  *
- * A "store" class isolates the persistence logic for data models from their users.
+ * A repository class isolates the persistence logic for data models from their users.
  * The data model user does not know anything about how the models are saved to
  * persistent storage, how they are retrieved or changed.
  */
@@ -21,9 +21,7 @@ class UserRepo
             throw new UserNotFound();
         }
 
-        $user = new User();
-        $user->setId((int) $record->id);
-        $user->setUsername($record->username);
+        $user = new User((int)$record->id, $record->username);
 
         return $user;
     }

@@ -53,7 +53,8 @@ class ReviewController extends Controller
     {
         $form = new RateForm();
         $form->movie = (new MovieRepo())->findById((int) $id);
-        $form->user = Yii::$app->user->identity;
+        /** @noinspection PhpUndefinedMethodInspection */
+        $form->user = Yii::$app->user->identity->getModel();
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             // The controller understands nothing of input mapping (from form model to data object)
             // except that the form model provides it.

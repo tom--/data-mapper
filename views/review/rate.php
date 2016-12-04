@@ -7,7 +7,7 @@ use yii\bootstrap\Html;
 
 ?>
 
-<h1>Rate: “<?= \yii\bootstrap\Html::encode($model->movie->title) ?>”</h1>
+<h1>Rate: “<?= \yii\bootstrap\Html::encode($model->movie->getTitle()) ?>”</h1>
 
 <div class="invitation-form">
     <?php $form = ActiveForm::begin(); ?>

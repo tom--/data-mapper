@@ -7,25 +7,26 @@ use app\models\ar\MovieRecord;
 use app\models\domain\Movie;
 
 /**
- * The "store" class for Movie data models.
+ * The repository class for Movie data models.
  *
- * A "store" class isolates the persistence logic for data models from their users.
+ * A repository class isolates the persistence logic for data models from their users.
  * The data model user does not know anything about how the models are saved to
  * persistent storage, how they are retrieved or changed.
  */
 class MovieRepo
 {
-    public static function fromRecord(MovieRecord $record = null) : Movie
+    public static function fromRecord(MovieRecord $record = null): Movie
     {
         if (empty($record)) {
             throw new MovieNotFound();
         }
 
-        $movie = new Movie();
-        $movie->setId((int) $record->id);
-        $movie->setTitle($record->title);
-        $movie->setNumRatings($record->getNumRatings());
-        $movie->setMeanRating($record->getMeanRating());
+        $movie = new Movie(
+            (int)$record->id,
+            $record->title,
+            $record->getNumRatings(),
+            $record->getMeanRating()
+        );
 
         return $movie;
     }

@@ -26,7 +26,7 @@ class RateForm extends Model
      */
     public $movie;
 
-    public function rules() : array
+    public function rules(): array
     {
         // Whatever you need. Familiar stuff
         return [
@@ -35,12 +35,9 @@ class RateForm extends Model
         ];
     }
 
-    public function getDataModel() : Rating
+    public function getDataModel(): Rating
     {
-        $model = new Rating();
-        $model->setRating((int) $this->rating);
-        $model->setUser($this->user);
-        $model->setMovie($this->movie);
+        $model = new Rating($this->user, $this->movie, (int)$this->rating);
 
         return $model;
     }

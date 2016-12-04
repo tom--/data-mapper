@@ -14,33 +14,34 @@ class Rating
     private $movie;
     private $rating;
 
-    public function getUser() : User
+    public function __construct(User $user, Movie $movie, int $rating)
+    {
+        $this->user = $user;
+        $this->movie = $movie;
+        $this->rating = $rating;
+    }
+
+    /**
+     * @return \app\models\domain\User The user that gave this rating
+     */
+    public function getUser(): User
     {
         return $this->user;
     }
 
-    public function setUser(User $user)
-    {
-        $this->user = $user;
-    }
-
-    public function getMovie() : Movie
+    /**
+     * @return \app\models\domain\Movie The movie of which this is the user's rating
+     */
+    public function getMovie(): Movie
     {
         return $this->movie;
     }
 
-    public function setMovie(Movie $movie)
-    {
-        $this->movie = $movie;
-    }
-
-    public function getRating() : int
+    /**
+     * @return int The rating
+     */
+    public function getRating(): int
     {
         return $this->rating;
-    }
-
-    public function setRating(int $rating)
-    {
-        $this->rating = $rating;
     }
 }
